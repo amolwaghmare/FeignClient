@@ -24,4 +24,7 @@ public interface AccountService {
 	
 	@RequestMapping(path="/services/account", method=RequestMethod.GET)
 	public AccountVO getAccount(@RequestParam("name") String name);
+	
+	@RequestMapping(path="/services/account", method=RequestMethod.POST)
+	public AccountVO addAccount(AccountVO accountVO) ;
 }

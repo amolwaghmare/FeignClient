@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.amol.spring.mvc.feignclient.service.AccountService;
+import com.amol.spring.mvc.feignclient.vo.AccountVO;
 
 @Controller
 public class AccountController {
@@ -21,8 +22,12 @@ public class AccountController {
 	
 	@RequestMapping(path="/login", method=RequestMethod.GET)
 	public String login(@RequestParam(name="username") String userName, ModelMap model) {
-		System.out.println("LoginController -> login user name=" + userName);
+		logger.debug("LoginController -> login user name=" + userName);
 		accountService.getAccount(userName);
+		AccountVO accountVO = new AccountVO();
+		accountVO.setName(userName);
+		accountVO.setBalance("1000");
+		accountService.addAccount(accountVO);
 		model.addAttribute("user", userName);
 		return "welcome";
 		
