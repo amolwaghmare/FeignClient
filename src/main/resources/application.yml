@@ -1,10 +1,6 @@
 spring:
   application:
     name: account-service-eureka-feign-client
-  mvc:
-    view:
-      prefix: /templates/
-      suffix: .jsp
 
 server:
   port: 8080
